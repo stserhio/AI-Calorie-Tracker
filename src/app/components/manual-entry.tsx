@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Sparkles, Save, X } from 'lucide-react';
+import { PARSE_FOOD_URL } from '../../lib/api';
 
 interface FoodData {
   name: string;
@@ -34,7 +35,7 @@ export default function ManualEntry({ onSave, onClose }: ManualEntryProps) {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/parse-food', {
+      const response = await fetch(PARSE_FOOD_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ export default function ManualEntry({ onSave, onClose }: ManualEntryProps) {
         data = await response.json();
       } catch {
         if (response.status === 404) {
-          alert('API недоступен (404). Запустите в отдельном терминале: npm run dev:api');
+          alert('API недоступен (404). Локально: npm run dev:api. На деплое: задайте VITE_API_URL (URL бэкенда с /api).');
           return;
         }
         throw new Error('API request failed');

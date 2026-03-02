@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { X, Sparkles, Check, Coffee, Sun, Moon, Apple, Edit3, Heart, Star } from 'lucide-react';
 import { UserProfile, DailyLog, Meal, FavoriteMeal } from '../../types';
+import { PARSE_FOOD_URL } from '../../../lib/api';
 
 interface AddMealModalProps {
   userProfile: UserProfile;
@@ -64,7 +65,7 @@ export function AddMealModal({ userProfile, dailyLogs, onUpdateDailyLogs, onClos
     setIsManualLoading(true);
 
     try {
-      const response = await fetch('/api/parse-food', {
+      const response = await fetch(PARSE_FOOD_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +78,7 @@ export function AddMealModal({ userProfile, dailyLogs, onUpdateDailyLogs, onClos
         data = await response.json();
       } catch {
         if (response.status === 404) {
-          alert('API unavailable (404). Run in separate terminal: npm run dev:api');
+          alert('API недоступен (404). Локально: npm run dev:api. На деплое: задайте VITE_API_URL (URL бэкенда с /api).');
           setIsManualLoading(false);
           return;
         }
@@ -163,7 +164,7 @@ export function AddMealModal({ userProfile, dailyLogs, onUpdateDailyLogs, onClos
     setIsProcessing(true);
 
     try {
-      const response = await fetch('/api/parse-food', {
+      const response = await fetch(PARSE_FOOD_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: input }),
@@ -174,7 +175,7 @@ export function AddMealModal({ userProfile, dailyLogs, onUpdateDailyLogs, onClos
         data = await response.json();
       } catch {
         if (!response.ok) {
-          alert('API unavailable (404). Run in separate terminal: npm run dev:api');
+          alert('API недоступен (404). Локально: npm run dev:api. На деплое: задайте VITE_API_URL (URL бэкенда с /api).');
           return;
         }
         throw new Error('Invalid API response');
