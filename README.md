@@ -1,11 +1,10 @@
-# Calorie Tracker - Advanced Nutrition Tracking App
+# Calorie Tracker - Advanced Calories & Macros Tracking App
 
-An intelligent nutrition tracking application with AI-powered food analysis and scientifically accurate KBJU calculations.
+An intelligent nutrition tracking application with AI-powered food analysis and scientifically accurate macros calculations.
 
 ## ✨ Features
 
 - 🤖 **AI Food Analysis** - Natural language input via Anthropic Claude API
-- 🧪 **Scientific KBJU** - Based on ISSN research standards
 - 🎯 **Goal-Specific Macros** - Personalized for lose/gain/maintain
 - 📊 **Progress Visualization** - Real-time tracking with charts
 - 🍽 **Manual Entry** - Full control over nutrition data
