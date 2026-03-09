@@ -1,3 +1,6 @@
+
+![calorietracker-final](https://github.com/user-attachments/assets/eb503f14-465a-40af-a1e2-29ea69d04cb1)
+
 # Calorie Tracker - Advanced Calories & Macros Tracking App
 
 An intelligent nutrition tracking application with AI-powered food analysis and scientifically accurate macros calculations.
